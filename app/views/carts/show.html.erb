@@ -1,3 +1,4 @@
+<% if cart.size > 0 %>
 <section class="cart-show">
 
   <header class="page-header">
@@ -15,6 +16,7 @@
         </tr>
       </thead>
       <tbody>
+        <% @cart_total = 0%>
         <% enhanced_cart.each do |item| %>
           <%= render 'item', product: item[:product], quantity: item[:quantity].to_i %>
         <% end %>
@@ -50,3 +52,13 @@
   </div>
 
 </section>
+
+<% else %>
+  <section> 
+  <div class="alert alert-danger" role="alert">
+    <h3><strong>Ops! Your cart is empty.</strong></h3>
+    <h4>Would you like to add something to it?</h4>
+  </div>
+  <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
+  </section>
+<% end %>
