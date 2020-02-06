@@ -1,13 +1,53 @@
 <section class="orders-show">
 
-  <header class="page-header">
-    <h1>Order #<%= @order.id %></h1>
+  <header class="page-header jumbotron">
+    <h2>Order #<%= @order.id %></h2>
+    <h2> Thank you for shopping with Jungle!</h2>
   </header>
 
-  <div class="order-summary jumbotron">
-    <h4>Thank you for your order!</h4>
+  <div>
+    <h4> ORDER SUMMARY </h4>
+  </div>
+
+  <div class="order-summary">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th colspan="2">Product</th>
+          <th>Unit Price</th>
+          <th>Quantity</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render @line_items %>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th colspan="4">
+            ORDER TOTAL:
+          </th>
+          <th>
+          <% order_total = 0 %>
+          <% @line_items.each do |item| %>
+            <% order_total += item.quantity * item.product.price %>
+          <% end %>
+          <%= humanized_money_with_symbol order_total %>
+          </th>
+        </tr>
+        <tr>
+          <th>
+          <p> EMAIL:</p>
+          </th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th ><p class="text-center"> <%= @order.email %> </p></th>
+        </tr>
+      </tfoot>
+    </table>
   </div>
 
   <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
 
-</section>
+
