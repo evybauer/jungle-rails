@@ -8,7 +8,7 @@
     <%= line_item.product.description %>
   </td>
   <td>
-    &#36;<%= line_item.product.price %>
+    <%= humanized_money_with_symbol line_item.product.price %>
   </td>
   <td>
     <%= line_item.quantity.to_i %>
