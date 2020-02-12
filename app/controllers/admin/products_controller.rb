@@ -6,6 +6,7 @@ class Admin::ProductsController < ApplicationController
 
   def index
     @products = Product.order(id: :desc).all
+    @line_items = LineItem.joins(:product).where(order_id: params[:id])
   end
 
   def new
@@ -24,9 +25,14 @@ class Admin::ProductsController < ApplicationController
 
   def destroy
     @product = Product.find params[:id]
-    @product.destroy
-    redirect_to [:admin, :products], notice: 'Product deleted!'
+      unless @product.line_items.any?
+      @product.destroy
+      redirect_to [:admin, :products], notice: 'Product deleted!'
+    else
+      redirect_to [:admin, :products], notice: 'Orders have been placed in your database with this product'
+    end
   end
+    
 
   private
 
