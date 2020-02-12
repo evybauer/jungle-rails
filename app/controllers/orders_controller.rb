@@ -16,14 +16,14 @@ class OrdersController < ApplicationController
       redirect_to cart_path, flash: { error: order.errors.full_messages.first }
     end
 
-  rescue Stripe::CardError => e
+    rescue Stripe::CardError => e
     redirect_to cart_path, flash: { error: e.message }
   end
 
   private
 
   def empty_cart!
-    # empty hash means no products in cart :)
+    # empty hash means no products in cart
     update_cart({})
   end
 

@@ -1,4 +1,5 @@
 <% if cart.size > 0 %>
+
 <section class="cart-show">
 
   <header class="page-header">
@@ -53,12 +54,12 @@
 
 </section>
 
-<% else %>
-  <section> 
-  <div class="alert alert-danger" role="alert">
-    <h3><strong>Ops! Your cart is empty.</strong></h3>
-    <h4>Would you like to add something to it?</h4>
-  </div>
-  <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
-  </section>
-<% end %>
+  <% else %>
+    <section> 
+    <div class="alert alert-danger" role="alert">
+      <h3><strong>Ops! Your cart is empty.</strong></h3>
+      <h4>Would you like to add something to it?</h4>
+    </div>
+    <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
+    </section>
+  <% end %>

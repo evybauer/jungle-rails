@@ -5,35 +5,34 @@
     <p>Check your items!</p>
   </header>
   
-<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th></th>
-      <th> <%= link_to 'PRODUCTS',  [:admin, :products] %></th>
-      <th> <div class="dropdown">
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th></th>
+        <th><%= link_to 'PRODUCTS',  [:admin, :products] %></th>
+        <th><div class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
           CATEGORIES 
           <span class="caret"></span>
           </a>
-          <ul class="dropdown-menu">
-            <% Category.all.each do |category| %>
-              <li><%= link_to category.name, category %></li>
-            <% end %>
-          </ul>
-        </div>
+            <ul class="dropdown-menu">
+              <% Category.all.each do |category| %>
+                <li><%= link_to category.name, category %></li>
+              <% end %>
+            </ul>
         </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row"></th>
-      <td><%= @product_count %></td>
-      <td><%= @category_count.count %></td>
-      <td></td>
-    </tr>
-  </tbody>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row"></th>
+        <td><%= @product_count %></td>
+        <td><%= @category_count.count %></td>
+        <td></td>
+      </tr>
+    </tbody>
   </table>
-  </div>
+
 </section>
 
 

@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.feature "Visitor clicks on product on home page and is redirected to the product's detail page", type: :feature, js: true do
 
-    # SETUP
     before :each do
       @category = Category.create! name: 'Apparel'
 
@@ -21,9 +20,8 @@ RSpec.feature "Visitor clicks on product on home page and is redirected to the p
     visit root_path
     product = first('article.product')
     product.click_link("Details »", match: :first)
-    # DEBUG / VERIFY
     expect(page).to have_css 'section.products-show', count: 1
-    page.save_screenshot
+    page.save_screenshot #Debug
   end
 end
 

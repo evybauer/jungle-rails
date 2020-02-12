@@ -5,7 +5,7 @@ RSpec.describe User, type: :model do
     it 'should create a User if first_name, last_name, email, password and password_confirmation are all true' do
       @user = User.new(first_name: "John", last_name: "Doe", email: "jhon@EMAIL.com", password: "J@eDb3$t", password_confirmation: "J@eDb3$t")
       @user.valid?
-    expect(@user.errors).not_to include("can\'t be blank")
+      expect(@user.errors).not_to include("can\'t be blank")
     end
     it 'should not create a User if last_name is missing' do
       @user = User.new(first_name: "John", email: "jhon@EMAIL.com", password: "J@eDb3$t", password_confirmation: "J@eDb3$t")
@@ -32,6 +32,7 @@ RSpec.describe User, type: :model do
       @user.save!
       expect(@user.errors[:password]).to_not be_nil 
     end
+    
     describe '.authenticate_with_credentials' do
       it 'should log the user if credentials are correct' do
         @user = User.new(first_name: "John", last_name: "Doe", email: "jhon@EMAIL.com", password: "J@eDb3$t", password_confirmation: "J@eDb3$t")

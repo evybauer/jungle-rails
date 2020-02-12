@@ -2,8 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "Visitor navigates to home page", type: :feature, js: true do
 
-    # SETUP
-    before :each do
+  before :each do
       @category = Category.create! name: 'Apparel'
 
       10.times do |n|
@@ -21,8 +20,7 @@ RSpec.feature "Visitor navigates to home page", type: :feature, js: true do
     visit root_path
     product = first('article.product')
     product.find("button", :text => /\AAdd\z/).click
-    # DEBUG / VERIFY
     expect(page.has_content?('(1)'))
-    page.save_screenshot
+    page.save_screenshot #Debug
   end
 end
